@@ -13,7 +13,7 @@ function fetchConfig(): Promise<void> {
       return response.json();
     })
     .then((config) => {
-      // Remplir l'environnement avec les données de configuration
+      // Remplir l'environnement avec les données de configuration      
       environment.apiConfig = config;
       console.log('Configuration chargée :', config);
     })
