@@ -10,7 +10,7 @@
   </div>
 
   <div class="movie-grid">
-    @for (movie of movies) {
+    @for (movie of movies; track movie.id) {
       <app-movie-thumbnail
         [movie]="movie"
         [isFavorite]="isFavorite(movie.id)"

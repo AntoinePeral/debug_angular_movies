@@ -1,18 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Movie } from '../models/movie.model';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
 
-  private baseUrl = 'https://api.themoviedb.org/3';
+  private baseUrl = environment.apiConfig.API_BASE_URL;
+  private http: HttpClient = inject(HttpClient)
   private options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer Bearer TON_JETON_ACCESS'
+      Authorization: `Bearer ${environment.apiConfig.API_AUTHORIZATION}`
     }
   };
 

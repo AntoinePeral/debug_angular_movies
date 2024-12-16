@@ -2,13 +2,18 @@
   <h2>Your Favorites</h2>
 
   <div class="movie-grid">
-    @for (movie of favorites; track $index) {
-      <app-movie-thumbnail
-        [movie]="movie"
-        (toggleFavorite)="toggleFavorite(movie)"
-      ></app-movie-thumbnail>
-      }
-        <p class="empty-message">You have no favorites yet. Start adding some movies!</p>
+    @if (favorites.length>0) {
+      @for (movie of favorites; track $index) {
+        <app-movie-thumbnail
+          [movie]="movie"
+          (toggleFavorite)="toggleFavorite(movie)"
+        ></app-movie-thumbnail>
+        }
+    } @else{
+      <p class="empty-message">You have no favorites yet. Start adding some movies!</p>
+    }
+
+        
   </div>
   
 </div>

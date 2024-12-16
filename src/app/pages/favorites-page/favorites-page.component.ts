@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MovieThumbnailComponent } from '../../components/movie-thumbnail/movie-thumbnail.component';
 import { Movie } from '../../models/movie.model';
+import { MovieService } from '../../services/movie.service';
 
 @Component({
   selector: 'app-favorites-page',
@@ -9,8 +10,9 @@ import { Movie } from '../../models/movie.model';
   templateUrl: './favorites-page.component.html',
   styleUrl: './favorites-page.component.scss',
 })
-export class FavoritesPageComponent {
+export class FavoritesPageComponent implements OnInit{
   favorites!: Movie[];
+  private movieService: MovieService = inject(MovieService)
 
   ngOnInit() {
     this.favorites = this.movieService.getFavorites();
